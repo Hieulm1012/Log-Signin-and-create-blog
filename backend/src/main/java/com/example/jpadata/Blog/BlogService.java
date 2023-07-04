@@ -29,7 +29,7 @@ public class BlogService {
                 new ReponseObject("Found", "found " + blogs.size() + " blogs of user id: " + customerId, blogs)
             );
         }
-        return ResponseEntity.status(405).body(
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
             new ReponseObject("Not Found", "Not found blogs of user id: " + customerId, blogs)
         );
     }

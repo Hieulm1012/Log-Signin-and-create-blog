@@ -15,12 +15,10 @@ import com.example.jpadata.module.*;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final BlogRepository blogRepository;
 
     @Autowired
     public CustomerService(CustomerRepository customerRepository, BlogRepository blogRepository){
         this.customerRepository = customerRepository;
-        this.blogRepository = blogRepository;
     }
 
     public ResponseEntity<ReponseObject> getCustomer() {
@@ -51,7 +49,7 @@ public class CustomerService {
 
     public ResponseEntity<ReponseObject> getOneCustomer(LoginForm loginForm) {
         if(loginForm.getEmail() == "" || loginForm.getPassword() == ""){
-            return ResponseEntity.status(405).body(
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(
                 new ReponseObject("input null", "not found input email and password", "")
             );
         };
